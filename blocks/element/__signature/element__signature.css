@@ -1,0 +1,6 @@
+.element__signature {
+    /* max-width: 246px; */
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
