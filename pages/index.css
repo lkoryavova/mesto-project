@@ -20,3 +20,5 @@
 @import url(../blocks/element/__signature/element__signature.css);
 @import url(../blocks/element/__name/element__name.css);
 @import url(../blocks/element/__choice/element__choice.css);
+@import url(../blocks/footer/footer.css);
+@import url(../blocks/footer/__info/footer__info.css);
