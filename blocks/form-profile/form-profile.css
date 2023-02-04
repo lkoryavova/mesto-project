@@ -1,0 +1,12 @@
+.form-profile {
+    position: absolute;
+    top: 195px;
+    left: 425px;
+    max-width: 430px;
+    max-height: 330px;
+    background-color: white;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    z-index: 1;
+}
