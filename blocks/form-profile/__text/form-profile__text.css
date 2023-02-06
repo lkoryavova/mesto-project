@@ -1,0 +1,41 @@
+.form-profile__text {
+    margin: 0;
+    padding: 0;
+    max-width: 358px;
+    width: 100%;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.21;
+    border: 0px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.form-profile__text::placeholder {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.21;
+    color: #000;
+}
+
+.form-profile__text::-webkit-input-placeholder {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.21;
+    color: #000;
+}
+
+.form-profile__text::-moz-placeholder {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.21;
+    color: #000;
+}
+
+.form-profile__text::-ms-input-placeholder {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.21;
+    color: #000;
+}

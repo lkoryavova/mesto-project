@@ -20,7 +20,14 @@
 @import url(../blocks/element/__signature/element__signature.css);
 @import url(../blocks/element/__name/element__name.css);
 @import url(../blocks/element/__choice/element__choice.css);
+@import url(../blocks/popup/popup.css);
+@import url(../blocks/popup/_opened/popup_opened.css);
 @import url(../blocks/form-profile/form-profile.css);
 @import url(../blocks/form-profile/__heading/form-profile__heading.css);
+@import url(../blocks/form-profile/__data/form-profile__data.css);
+@import url(../blocks/form-profile/__text/form-profile__text.css);
+@import url(../blocks/form-profile/__line/form-profile__line.css);
+@import url(../blocks/form-profile/__button/form-profile__button.css);
+
 @import url(../blocks/footer/footer.css);
 @import url(../blocks/footer/__info/footer__info.css);

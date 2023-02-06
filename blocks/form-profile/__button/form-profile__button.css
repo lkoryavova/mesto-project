@@ -1,0 +1,14 @@
+.form-profile__button {
+    max-width: 358px;
+    width: 100%;
+    background-color: black;
+    opacity: 80%;
+    margin-top: 48px;
+    padding: 14px 0 18px;
+    color: white;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 1.22;
+    outline: none;
+    border: none;
+}
