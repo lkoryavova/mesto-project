@@ -1,3 +1,19 @@
 .element__choice {
     max-width: 22px;
+    width: 100%;
+    max-height: 28px;
+    background-color: white;
+    background-image: url('../../../images/Vector.svg');
+    background-repeat: no-repeat;
+    background-position: center center;
+    outline: none;
+    border: 0;
+}
+
+.element__choice:hover {
+    background-image: url('../../../images/heart_gray.svg');
+}
+
+.element__choice:active {
+    background-image: url('../../../images/heart_black.png');
 }
