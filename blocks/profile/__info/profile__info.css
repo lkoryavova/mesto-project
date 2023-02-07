@@ -1,9 +1,11 @@
 .profile__info {
-    max-width: 336px;
+    max-width: 366px;
+    width: 100%;
+    width: auto;
     max-height: 73px;
     padding-left: 30px;
     display: grid;
-    grid-template-columns: max-content 1fr;
+    grid-template-columns: max-content 24px;
     grid-template-rows: 39px 18px;
     column-gap: 18px;
     row-gap: 16px;
