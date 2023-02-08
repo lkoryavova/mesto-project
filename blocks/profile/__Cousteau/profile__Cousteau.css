@@ -3,12 +3,6 @@
     padding: 0;
     max-width: 294px;
     width: 100%;
-    width: auto;
-    grid-row-start: 1;
-    grid-row-end: 1;
-    /* grid-column: 1; */
-    grid-column-start: 1;
-    grid-column-end: 1;
     font-weight: 500;
     font-size: 42px;
     line-height: 1.14;

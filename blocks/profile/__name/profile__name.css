@@ -1,0 +1,10 @@
+.profile__name {
+    min-width: 336px;
+    width: 100%;
+    width: max-content;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    /* justify-content: space-between; */
+    flex-wrap: nowrap;
+}
