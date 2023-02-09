@@ -1,4 +1,4 @@
-.form-profile__button {
+.popup__button {
     max-width: 358px;
     width: 100%;
     background-color: black;
@@ -13,6 +13,15 @@
     border-radius: 2px;
 }
 
-.form-profile__button:hover {
+.popup__button:hover {
     opacity: 80%;
+}
+
+@media all and (max-width: 1023px) {
+    .popup__button {
+        max-width: 238px;
+        margin-top: 45px;
+        padding: 14px 0;
+        font-size: 14px;
+    }
 }

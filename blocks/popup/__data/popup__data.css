@@ -1,4 +1,4 @@
-.form-profile__data {
+.popup__data {
     max-width: 358px;
     width: 100%;
     margin: 0;
@@ -9,4 +9,10 @@
     display: grid;
     grid-template-columns: 1fr;
     gap: 33px;
+}
+
+@media all and (max-width: 1023px) {
+    .popup__data {
+        gap: 30px;
+    }
 }

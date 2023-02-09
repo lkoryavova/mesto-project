@@ -2,12 +2,19 @@
     position: absolute;
     top: 0;
     left: 0;
-    min-width: 320px;
+    min-width: 282px;
     max-width: 1280px;
     width: 100%;
-    height: 100%;
-    /* min-height: 100%; */
+    max-height: 2892px;
+    height: 100vh;
     background-color: rgba(0, 0, 0, 0.5);
     z-index: 2;
     display: none;
 }
+
+@media all and (max-width: 1023px) {
+    .popup {
+    max-width: 985px;
+    max-height: 568px;
+    }
+} 
