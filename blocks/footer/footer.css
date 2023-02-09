@@ -4,3 +4,10 @@
     margin: 0 auto;
     padding-bottom: 60px;
 }
+
+@media all and (max-width: 1023px) {
+    .footer {
+        max-width: 282px;
+        padding-bottom: 36px;
+    }
+}

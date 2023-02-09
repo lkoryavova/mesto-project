@@ -12,3 +12,12 @@
     column-gap: 17px;
     row-gap: 20px;
 }
+
+@media all and (max-width: 1023px) {
+    .elements {
+        padding-top: 36px;
+        padding-bottom: 48px;
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+}

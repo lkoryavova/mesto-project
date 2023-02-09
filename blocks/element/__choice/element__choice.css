@@ -8,6 +8,7 @@
     background-position: center center;
     outline: none;
     border: 0;
+    cursor: pointer;
 }
 
 .element__choice:hover {
