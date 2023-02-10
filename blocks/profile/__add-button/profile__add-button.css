@@ -11,7 +11,8 @@
 }
 
 .profile__add-button:hover {
-    background-image: url('../../../images/add-button.svg');
+    /* background-image: url('../../../images/add-button.svg'); */
+    opacity: 0.6;
 }
 
 @media all and (max-width: 1023px) {

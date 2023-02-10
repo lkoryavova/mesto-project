@@ -13,7 +13,8 @@
 }
 
 .popup__close:hover {
-    background-image: url('../../../images/close-icon_gray.png');
+    /* background-image: url('../../../images/close-icon_gray.png'); */
+    opacity: 0.6;
 }
 
 @media all and (max-width: 1023px) {
