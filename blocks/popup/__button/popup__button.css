@@ -20,7 +20,7 @@
 @media all and (max-width: 1023px) {
     .popup__button {
         max-width: 238px;
-        margin-top: 45px;
+        margin: 45px auto 0;
         padding: 14px 0;
         font-size: 14px;
     }

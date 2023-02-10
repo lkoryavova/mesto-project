@@ -1,7 +1,7 @@
 .popup__data {
     max-width: 358px;
     width: 100%;
-    margin: 0;
+    margin: 0 auto;
     padding: 0;
     outline: none;
     border: 0px;
@@ -13,6 +13,7 @@
 
 @media all and (max-width: 1023px) {
     .popup__data {
+        max-width: 238px;
         gap: 30px;
     }
 }
