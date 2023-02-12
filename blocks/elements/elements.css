@@ -1,9 +1,8 @@
 .elements {
     width: 100%;
-    width: auto;
     margin: 0 auto;
     padding-top: 50px;
-    padding-bottom: 66px;
+    padding-bottom: 67px;
     padding-left: 0;
     list-style-type: none;
     display: grid;
@@ -17,7 +16,6 @@
     .elements {
         padding-top: 36px;
         padding-bottom: 48px;
-        display: grid;
         grid-template-columns: 1fr;
     }
 }

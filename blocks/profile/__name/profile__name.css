@@ -1,19 +1,21 @@
 .profile__name {
-    min-width: 336px;
+    margin: 0;
+    padding: 0;
+    padding-right: 18px;
+    max-width: 294px;
     width: 100%;
-    width: max-content;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
+    font-weight: 500;
+    font-size: 42px;
+    line-height: 1.14;
+    color: white;
+
 }
 
 @media all and (max-width: 1023px) {
     .profile__name {
-        min-width: 282px;
-        max-width: 282px;
-        width: auto;
-        width: max-content;
-        margin: 0 auto;
-        justify-content: center;
+        max-width: 189px;
+        font-size: 27px;
+        line-height: 1.2;
+        padding: 0 10px;
     }
 }

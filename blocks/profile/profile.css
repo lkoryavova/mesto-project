@@ -1,6 +1,10 @@
 .profile {
+    padding-top: 36px;
     display: flex;
     justify-content: space-between;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
 }
 
 @media all and (max-width: 1023px) {

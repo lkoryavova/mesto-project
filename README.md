@@ -12,4 +12,4 @@
 
 Выполнила студент "Яндекс Практикума" Корявова Елена.
 
-https://lkoryavova.github.io/mesto-project/
+https://lkoryavova.github.io/mesto-project
