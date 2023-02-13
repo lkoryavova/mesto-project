@@ -1,11 +1,9 @@
 .profile__info {
     width: 370px;
     width: 100%;
-    height: auto;
     padding-left: 30px;
     display: flex;
     flex-direction: column;
-    /* justify-content: space-between; */
 }
 
 @media all and (max-width: 1023px) {

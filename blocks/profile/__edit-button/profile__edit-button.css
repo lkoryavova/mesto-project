@@ -12,7 +12,6 @@
 }
 
 .profile__edit-button:hover {
-    /* background-image: url('../../../images/edit-button_gray.svg'); */
     opacity: 60%;
 }
 
