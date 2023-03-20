@@ -73,3 +73,18 @@ const initialCards = [
     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
   }
 ];
+
+const place = page.querySelector('#place');
+const placeContainer = place.querySelector('#place-container');
+const placeClose = placeContainer.querySelector('#place-close');
+const openButtonPlace = profile.querySelector('.profile__add-button');
+
+// открытие окна место
+openButtonPlace.addEventListener('click', function (event) {
+  place.classList.add('popup_opened');
+});
+
+// закрытие
+placeClose.addEventListener('click', function (event) {
+  place.classList.remove('popup_opened');
+});
