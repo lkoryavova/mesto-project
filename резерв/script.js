@@ -76,33 +76,25 @@ const initialCards = [
 
 // Добавляем карточки на страницу
 
-const elements = document.querySelector('.elements');
 
-const element = function cardCreate(link, name) {
-const cardTemplate = document.querySelector('#card-template').content;
-const cardElement = cardTemplate.querySelector('.element').cloneNode(true);
-const elementImage = cardElement.querySelector('.element__image').src = `${link}`;
-const elementSignature = cardElement.querySelector('.element__signature');
-const elementName = elementSignature.querySelector('.element__name').textContent = `${name}`;
-const elementChoice = elementSignature.querySelector('.element__choice');
-elementImage.alt = `${name}`;
-return cardElement;
-}
 
-const addCard = function(link, name) {
-elements.append(element(link, name));
-}
 
-initialCards.forEach(item => {
-addCard(item.link, item.name);
-});
 
-// открытие окна место
+
+
+
+
+
+
+
+
+
 const place = page.querySelector('#place');
 const placeContainer = place.querySelector('#place-container');
 const placeClose = placeContainer.querySelector('#place-close');
 const openButtonPlace = profile.querySelector('.profile__add-button');
 
+// открытие окна место
 openButtonPlace.addEventListener('click', function (event) {
   place.classList.add('popup_opened');
 });
