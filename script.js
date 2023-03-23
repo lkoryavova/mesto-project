@@ -19,11 +19,16 @@ popupClose.addEventListener('click', function (event) {
   popup.classList.remove('popup_opened');
 });
 
-// Находим форму в DOM
+// Поля формы
+const profileName = profileNameConteiner.querySelector('.profile__name').textContent;
+const profileText = profileInfo.querySelector('.profile__text').textContent;
 const formElement = popupContainer.querySelector('[name="form-profile"]');
-// Находим поля формы в DOM
 const nameInput = formElement.querySelector('[name="name"]');
 const jobInput = formElement.querySelector('[name="speсial"]');
+nameInput.placeholder = profileName;
+jobInput.placeholder = profileText;
+
+// Находим форму в DOM
 
 // Обработчик «отправки» формы, хотя пока
 // она никуда отправляться не будет
