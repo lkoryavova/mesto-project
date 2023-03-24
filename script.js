@@ -45,6 +45,13 @@ function handleFormSubmit(evt) {
 // Прикрепляем обработчик к форме:
 // он будет следить за событием “submit” - «отправка»
 formElement.addEventListener('submit', handleFormSubmit);
+// Автоматическое закрытие попапа
+const formButton = formElement.querySelector('.form-profile__button');
+formButton.addEventListener('click', function (event) {
+  popup.classList.remove('popup_opened');
+});
+
+
 
 const initialCards = [
   {
