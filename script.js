@@ -20,16 +20,13 @@ popupClose.addEventListener('click', function (event) {
 });
 
 // Поля формы
-const profileName = profileNameConteiner.querySelector('.profile__name').textContent;
-const profileText = profileInfo.querySelector('.profile__text').textContent;
-const formElement = popupContainer.querySelector('[name="form-profile"]');
-const nameInput = formElement.querySelector('[name="name"]');
-const jobInput = formElement.querySelector('[name="speсial"]');
-nameInput.placeholder = profileName;
-jobInput.placeholder = profileText;
+
+// Выберите элементы, куда должны быть вставлены значения полей
+const profileName = profileNameConteiner.querySelector('.profile__name');
+const profileText = profileInfo.querySelector('.profile__text');
 
 // Находим форму в DOM
-
+const formElement = popupContainer.querySelector('[name="form-profile"]');
 // Обработчик «отправки» формы, хотя пока
 // она никуда отправляться не будет
 function handleFormSubmit(evt) {
@@ -38,14 +35,11 @@ function handleFormSubmit(evt) {
                                                 // О том, как это делать, расскажем позже.
 
     // Получите значение полей jobInput и nameInput из свойства value
-    jobInput.value;
-    nameInput.value;
-    // Выберите элементы, куда должны быть вставлены значения полей
-const speсial = formElement.querySelector('#speсial');
-const name = formElement.querySelector('#name');
+    const nameInput = formElement.querySelector('[name="name"]').value;
+    const jobInput = formElement.querySelector('[name="speсial"]').value;
     // Вставьте новые значения с помощью textContent
-    speсial.textContent = jobInput.value;
-    name.textContent = nameInput.value;
+    profileName.textContent = nameInput;
+    profileText.textContent = jobInput;
 }
 
 // Прикрепляем обработчик к форме:
