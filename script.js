@@ -150,15 +150,3 @@ const placeButton = formPlace.querySelector('#place-button');
 placeButton.addEventListener('click', function () {
   place.classList.remove('popup_opened');
 });
-
-// Лайк карточки
-const cardTemplate = elements.querySelector('#card-template').content;
-const cardElement = cardTemplate.querySelector('.element').cloneNode(true);
-const elementSignature = cardElement.querySelector('.element__signature');
-const elementChoice = elementSignature.querySelector('.element__choice');
-elementChoice.addEventListener('click', function (event) {
-    console.log(elementChoice);
-    debugger
-  event.target.classList.toggle('element__choice_active');
-});
-console.log(elementChoice);
