@@ -89,9 +89,12 @@ const element = function cardCreate(link, name) {
   const cardElement = cardTemplate.querySelector('.element').cloneNode(true);
   const elementImage = cardElement.querySelector('.element__image').src = `${link}`;
   const elementSignature = cardElement.querySelector('.element__signature');
-  let elementName = elementSignature.querySelector('.element__name').textContent = `${name}`;
-  let elementChoice = elementSignature.querySelector('.element__choice');
+  const elementName = elementSignature.querySelector('.element__name').textContent = `${name}`;
   elementImage.alt = `${name}`;
+  const elementChoice = elementSignature.querySelector('.element__choice');
+  elementChoice.addEventListener('click', function (event) {
+  event.target.classList.toggle('element__choice_active');
+});
   return cardElement;
 }
 
@@ -148,12 +151,14 @@ placeButton.addEventListener('click', function () {
   place.classList.remove('popup_opened');
 });
 
-
-  // Вставьте новые значения с помощью textContent
-    // elementName.textContent = placeName;
-  // elementImage.src = placeWay;
-
-  
-// Выберите элементы, куда должны быть вставлены значения полей
-// let elementName = elementSignature.querySelector('.element__name');
-// let elementImage = cardElement.querySelector('.element__image');
+// Лайк карточки
+const cardTemplate = elements.querySelector('#card-template').content;
+const cardElement = cardTemplate.querySelector('.element').cloneNode(true);
+const elementSignature = cardElement.querySelector('.element__signature');
+const elementChoice = elementSignature.querySelector('.element__choice');
+elementChoice.addEventListener('click', function (event) {
+    console.log(elementChoice);
+    debugger
+  event.target.classList.toggle('element__choice_active');
+});
+console.log(elementChoice);

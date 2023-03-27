@@ -11,10 +11,6 @@
     cursor: pointer;
 }
 
-.element__choice:hover {
+/* .element__choice:hover {
     background-image: url('../../../images/heart_gray.svg');
-}
-
-.element__choice:active {
-    background-image: url('../../../images/heart_black.svg');
-}
+} */
