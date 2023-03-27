@@ -1,3 +1,7 @@
 .element__choice_active {
     background-image: url('../../../../images/heart_black.svg');
 }
+
+.element__choice_active:hover {
+    background-image: url('../../../../images/heart_black.svg');
+}
