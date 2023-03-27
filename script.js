@@ -30,16 +30,16 @@ const formElement = popupContainer.querySelector('[name="form-profile"]');
 // Обработчик «отправки» формы, хотя пока
 // она никуда отправляться не будет
 function handleFormSubmit(evt) {
-    evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
-                                                // Так мы можем определить свою логику отправки.
-                                                // О том, как это делать, расскажем позже.
+  evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
+  // Так мы можем определить свою логику отправки.
+  // О том, как это делать, расскажем позже.
 
-    // Получите значение полей jobInput и nameInput из свойства value
-    const nameInput = formElement.querySelector('[name="name"]').value;
-    const jobInput = formElement.querySelector('[name="speсial"]').value;
-    // Вставьте новые значения с помощью textContent
-    profileName.textContent = nameInput;
-    profileText.textContent = jobInput;
+  // Получите значение полей jobInput и nameInput из свойства value
+  const nameInput = formElement.querySelector('[name="name"]').value;
+  const jobInput = formElement.querySelector('[name="speсial"]').value;
+  // Вставьте новые значения с помощью textContent
+  profileName.textContent = nameInput;
+  profileText.textContent = jobInput;
 }
 
 // Прикрепляем обработчик к форме:
@@ -47,7 +47,7 @@ function handleFormSubmit(evt) {
 formElement.addEventListener('submit', handleFormSubmit);
 // Автоматическое закрытие попапа
 const formButton = formElement.querySelector('.form-profile__button');
-formButton.addEventListener('click', function (event) {
+formButton.addEventListener('click', function () {
   popup.classList.remove('popup_opened');
 });
 
@@ -85,22 +85,22 @@ const initialCards = [
 const elements = document.querySelector('.elements');
 
 const element = function cardCreate(link, name) {
-const cardTemplate = document.querySelector('#card-template').content;
-const cardElement = cardTemplate.querySelector('.element').cloneNode(true);
-const elementImage = cardElement.querySelector('.element__image').src = `${link}`;
-const elementSignature = cardElement.querySelector('.element__signature');
-const elementName = elementSignature.querySelector('.element__name').textContent = `${name}`;
-const elementChoice = elementSignature.querySelector('.element__choice');
-elementImage.alt = `${name}`;
-return cardElement;
+  const cardTemplate = document.querySelector('#card-template').content;
+  const cardElement = cardTemplate.querySelector('.element').cloneNode(true);
+  const elementImage = cardElement.querySelector('.element__image').src = `${link}`;
+  const elementSignature = cardElement.querySelector('.element__signature');
+  let elementName = elementSignature.querySelector('.element__name').textContent = `${name}`;
+  let elementChoice = elementSignature.querySelector('.element__choice');
+  elementImage.alt = `${name}`;
+  return cardElement;
 }
 
-const addCard = function(link, name) {
-elements.append(element(link, name));
+const addCard = function (link, name) {
+  elements.append(element(link, name));
 }
 
 initialCards.forEach(item => {
-addCard(item.link, item.name);
+  addCard(item.link, item.name);
 });
 
 // открытие окна место
@@ -118,82 +118,42 @@ placeClose.addEventListener('click', function (event) {
   place.classList.remove('popup_opened');
 });
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+// Добавление карточки
 
 // Находим форму в DOM
 const formPlace = placeContainer.querySelector('[name="form-place"]');
-// Находим поля формы в DOM
-const placeName = formPlace.querySelector('#place-name');
-const placeWay = formPlace.querySelector('#place-way');
-
-
 // Обработчик «отправки» формы, хотя пока
 // она никуда отправляться не будет
-function handlePlaceSubmit(evt) {
+function handleplaceSubmit(evt) {
   evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
-                                              // Так мы можем определить свою логику отправки.
-                                              // О том, как это делать, расскажем позже.
+  // Так мы можем определить свою логику отправки.
+  // О том, как это делать, расскажем позже.
 
-  // Получите значение полей jobInput и nameInput из свойства value
-  placeName.value;
-  placeWay.value;
-  // Выберите элементы, куда должны быть вставлены значения полей
-const name = formPlace.querySelector('#place-name');
-const link = formPlace.querySelector('#place-way');
-  // Вставьте новые значения с помощью textContent
-  name.textContent = placeName.value;
-  link.textContent = nameInput.value;
+  // Получите значение полей placeName и placeWay из свойства value
+  const placeName = formPlace.querySelector('#place-name').value;
+  const placeWay = formPlace.querySelector('#place-way').value;
+
+  const addnewCard = function (link, name) {
+    elements.prepend(element(link, name));
+  }
+  addnewCard(placeWay, placeName);
 }
 
 // Прикрепляем обработчик к форме:
 // он будет следить за событием “submit” - «отправка»
-formPlace.addEventListener('submit', handlePlaceSubmit);
+formPlace.addEventListener('submit', handleplaceSubmit);
+// Автоматическое закрытие попапа
+const placeButton = formPlace.querySelector('#place-button');
+placeButton.addEventListener('click', function () {
+  place.classList.remove('popup_opened');
+});
 
 
+  // Вставьте новые значения с помощью textContent
+    // elementName.textContent = placeName;
+  // elementImage.src = placeWay;
 
-// function addCard(cardValue, titleValue) {
-//   const cardTemplate = document.querySelector('#card-template').content;
-//  }
- 
-//  addElement.addEventListener('click', function () {
-//    const namePlace = document.querySelector('#place-name');
-//    const placeLink = document.querySelector('#place-way');
- 
-//    addCard(artist.value, title.value);
-//    renderHasSongs();
- 
-//    card.value = '';
-//    title.value = '';
-//  });
-
- 
+  
+// Выберите элементы, куда должны быть вставлены значения полей
+// let elementName = elementSignature.querySelector('.element__name');
+// let elementImage = cardElement.querySelector('.element__image');
