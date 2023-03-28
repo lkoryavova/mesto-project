@@ -1,7 +1,0 @@
-.element__card {
-    border-radius: 0 0 10px 10px;
-    padding: 25px 20px 26px 21px;
-    display: flex;
-    flex-direction: column;
-    background-color: white;
-}

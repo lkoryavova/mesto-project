@@ -91,9 +91,16 @@ const element = function cardCreate(link, name) {
   const elementSignature = cardElement.querySelector('.element__signature');
   const elementName = elementSignature.querySelector('.element__name').textContent = `${name}`;
   elementImage.alt = `${name}`;
+  // Лайк карточки
   const elementChoice = elementSignature.querySelector('.element__choice');
   elementChoice.addEventListener('click', function (event) {
   event.target.classList.toggle('element__choice_active');
+});
+// Удаление карточки
+const elementDelete = cardElement.querySelector('.element__delete');
+elementDelete.addEventListener('click', function (event) {
+ const listItem = event.target.elementDelete.closest('.element');
+ listItem.remove();
 });
   return cardElement;
 }
@@ -105,7 +112,7 @@ const addCard = function (link, name) {
 initialCards.forEach(item => {
   addCard(item.link, item.name);
 });
-
+console.log(elementDelete);
 // открытие окна место
 const place = page.querySelector('#place');
 const placeContainer = place.querySelector('#place-container');
