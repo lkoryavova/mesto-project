@@ -99,7 +99,7 @@ const element = function cardCreate(link, name) {
 // Удаление карточки
 const elementDelete = cardElement.querySelector('.element__delete');
 elementDelete.addEventListener('click', function (event) {
- const listItem = event.target.elementDelete.closest('.element');
+ const listItem = elementDelete.closest('.element');
  listItem.remove();
 });
   return cardElement;
@@ -112,7 +112,7 @@ const addCard = function (link, name) {
 initialCards.forEach(item => {
   addCard(item.link, item.name);
 });
-console.log(elementDelete);
+
 // открытие окна место
 const place = page.querySelector('#place');
 const placeContainer = place.querySelector('#place-container');
@@ -128,7 +128,7 @@ placeClose.addEventListener('click', function (event) {
   place.classList.remove('popup_opened');
 });
 
-// Добавление карточки
+// Добавление карточки пользователем
 
 // Находим форму в DOM
 const formPlace = placeContainer.querySelector('[name="form-place"]');
