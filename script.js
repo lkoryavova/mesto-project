@@ -38,8 +38,10 @@ function handleFormSubmit(evt) {
   const nameInput = formElement.querySelector('[name="name"]').value;
   const jobInput = formElement.querySelector('[name="speсial"]').value;
   // Вставьте новые значения с помощью textContent
-  profileName.textContent = nameInput;
-  profileText.textContent = jobInput;
+  if (nameInput !== "" && jobInput !== "") {
+    profileName.textContent = nameInput;
+    profileText.textContent = jobInput;
+  }
 }
 
 // Прикрепляем обработчик к форме:
@@ -94,14 +96,14 @@ const element = function cardCreate(link, name) {
   // Лайк карточки
   const elementChoice = elementSignature.querySelector('.element__choice');
   elementChoice.addEventListener('click', function (event) {
-  event.target.classList.toggle('element__choice_active');
-});
-// Удаление карточки
-const elementDelete = cardElement.querySelector('.element__delete');
-elementDelete.addEventListener('click', function (event) {
- const listItem = elementDelete.closest('.element');
- listItem.remove();
-});
+    event.target.classList.toggle('element__choice_active');
+  });
+  // Удаление карточки
+  const elementDelete = cardElement.querySelector('.element__delete');
+  elementDelete.addEventListener('click', function (event) {
+    const listItem = elementDelete.closest('.element');
+    listItem.remove();
+  });
   return cardElement;
 }
 
@@ -144,7 +146,9 @@ function handleplaceSubmit(evt) {
   const placeWay = formPlace.querySelector('#place-way').value;
 
   const addnewCard = function (link, name) {
-    elements.prepend(element(link, name));
+    if (link !== "" && name !== "") {
+      elements.prepend(element(link, name));
+    }
   }
   addnewCard(placeWay, placeName);
 }
@@ -156,4 +160,29 @@ formPlace.addEventListener('submit', handleplaceSubmit);
 const placeButton = formPlace.querySelector('#place-button');
 placeButton.addEventListener('click', function () {
   place.classList.remove('popup_opened');
+});
+
+//Открытие попапа с картинкой
+//Находим элементы
+const placeViewing = document.querySelector('.place-viewing');
+const placeViewingImage = placeViewing.querySelector('.place-viewing__image');
+const placeViewingCaption = placeViewing.querySelector('.place-viewing__caption');
+const elementImage = document.querySelectorAll('.element__image');
+//Присваиваем значения
+elementImage.forEach((elementImage) => {
+elementImage.addEventListener('click', function (event) {
+  placeViewingImage.src = event.currentTarget.src;
+const element = elementImage.closest('.element');
+const elementName = element.querySelector('.element__name');
+  placeViewingCaption.textContent = elementName.textContent;
+  viewing.classList.add('popup_opened');
+})
+});
+
+// Закрываем попап
+const viewing = page.querySelector('#viewing');
+const viewingContainer = viewing.querySelector('.viewing-container');
+const viewingClose = viewingContainer.querySelector('#viewing-close');
+viewingClose.addEventListener('click', function (event) {
+  viewing.classList.remove('popup_opened');
 });

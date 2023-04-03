@@ -28,16 +28,16 @@
     </section>
     <section class="gallery">
       <ul class="elements">
-      <template id="card-template">
-        <li class="element">
-          <img class="element__image" alt="фотография места">
-          <button type="button" class="element__delete"></button>
-          <div class="element__signature">
-            <h2 class="element__name"></h2>
-            <button type="button" class="element__choice"></button>
-          </div>
-        </li>
-      </template>
+        <template id="card-template">
+          <li class="element">
+            <img class="element__image" alt="">
+            <button type="button" class="element__delete"></button>
+            <div class="element__signature">
+              <h2 class="element__name"></h2>
+              <button type="button" class="element__choice"></button>
+            </div>
+          </li>
+        </template>
       </ul>
     </section>
   </main>
@@ -64,6 +64,15 @@
         <input type="url" class="form-profile__text" id="place-way" name="place-way" placeholder="Ссылка на картинку">
         <button id="place-button" type="submit" class="form-profile__button">Создать</button>
       </form>
+    </div>
+  </div>
+  <div id="viewing" class="popup">
+    <div class="viewing-container">
+      <button id="viewing-close" type="button" class="popup__close"></button>
+        <figure class="place-viewing">
+          <img class="place-viewing__image" alt="">
+          <figcaption class="place-viewing__caption"></figcaption>
+        </figure>
     </div>
   </div>
   <script src="./script.js"></script>

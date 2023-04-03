@@ -1,0 +1,14 @@
+.viewing-container {
+    position: relative;
+    margin: 90px auto;
+    max-width: 75vw;
+    max-height: 75vw;
+}
+
+@media all and (max-width: 1023px) {
+    .viewing-container {
+        padding: 0;
+        max-width: 240px;
+        height: auto;
+    }
+} 

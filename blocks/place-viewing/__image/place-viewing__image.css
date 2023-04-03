@@ -1,0 +1,9 @@
+.place-viewing__image {
+    Width: 100%;
+}
+
+@media all and (max-width: 1023px) {
+    .lead__image {
+        max-width: 282px;
+    }
+}
