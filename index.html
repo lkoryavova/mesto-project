@@ -44,9 +44,9 @@
   <footer class="footer">
     <p class="footer__info">© 2020 Mesto Russia</p>
   </footer>
-  <div class="popup">
+  <div class="popup profile-popup">
     <div class="popup__container">
-      <button type="button" class="popup__close"></button>
+      <button type="button" class="popup__close profile__close-button"></button>
       <h3 class="popup__heading">Редактировать профиль</h3>
       <form name="form-profile">
         <input type="text" class="form-profile__text" id="name" name="name" placeholder="Жак-Ив Кусто">
@@ -57,9 +57,9 @@
   </div>
   <div id="place" class="popup">
     <div id="place-container" class="popup__container">
-      <button id="place-close" type="button" class="popup__close"></button>
+      <button id="place-close" type="button" class="popup__close "></button>
       <h3 id="place-heading" class="popup__heading">Новое место</h3>
-      <form name="form-place">
+      <form name="card-form">
         <input type="text" class="form-profile__text" id="place-name" name="place-name" placeholder="Название">
         <input type="url" class="form-profile__text" id="place-way" name="place-way" placeholder="Ссылка на картинку">
         <button id="place-button" type="submit" class="form-profile__button">Создать</button>
@@ -70,10 +70,10 @@
     <div class="viewing-container">
       <button id="viewing-close" type="button" class="popup__close"></button>
         <figure class="place-viewing">
-          <img class="place-viewing__image" alt="">
+          <img class="place-viewing__image" src="" alt="">
           <figcaption class="place-viewing__caption"></figcaption>
         </figure>
     </div>
   </div>
-  <script src="./script.js"></script>
+  <script src="./scripts/script.js"></script>
 </body>
