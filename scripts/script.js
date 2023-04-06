@@ -8,11 +8,16 @@ const profileContainer = profile.querySelector('.profile__container');
 const profileInfo = profileContainer.querySelector('.profile__info');
 const profileNameConteiner = profileInfo.querySelector('.profile__name-conteiner');
 const openButton = profileNameConteiner.querySelector('.profile__edit-button');
-const profileForm = popupContainer.querySelector('[name="form-profile"]');
+const profileForm = document.forms["form-profile"];
 const profileFormName = profileForm.querySelector('[name="name"]');
 const profileFormJob = profileForm.querySelector('[name="speсial"]');
 const profileName = profileNameConteiner.querySelector('.profile__name');
 const profileText = profileInfo.querySelector('.profile__text');
+const cardForm = document.forms["card-form"];
+const placeName = cardForm.querySelector('#place-name');
+const placeWay = cardForm.querySelector('#place-way');
+const inputsProfileForm = profileForm.querySelectorAll('#name, #speсial');
+const inputsCardForm = cardForm.querySelectorAll('#place-name, #place-way');
 
 // Функция открытия попапа
 function openPopup(popup) {
@@ -53,6 +58,12 @@ function profileFormSubmit(evt) {
     profileText.textContent = jobInput;
   }
   closePopup(profilePopup); // Автоматическое закрытие попапа
+  inputsProfileForm.forEach(input => {
+    input.value = '';
+  });
+  // document.getElementById.forms["form-profile"].reset();
+  // или пробую так, всё равно поля не очищаются
+  // document.getElementById.profileForm.querySelectorAll('#name, #speсial').reset();
 }
 
 // Прикрепляем обработчик к форме:
@@ -139,9 +150,6 @@ placeClose.addEventListener('click', function (event) {
 });
 
 // Добавление карточки пользователем
-
-// Находим форму в DOM
-const cardForm = document.forms["card-form"];
 // Обработчик «отправки» формы, хотя пока
 // она никуда отправляться не будет
 function cardFormSubmit(evt) {
@@ -150,15 +158,19 @@ function cardFormSubmit(evt) {
   // О том, как это делать, расскажем позже.
 
   // Получите значение полей placeName и placeWay из свойства value
-  const placeName = cardForm.querySelector('#place-name').value;
-  const placeWay = cardForm.querySelector('#place-way').value;
+  const placeNameValue = placeName.value;
+  const placeWayValue = placeWay.value;
 
-  const addnewCard = function (link, name) {
+  const addNewCard = function (link, name) {
     if (link !== "" && name !== "") {
       elements.prepend(createCard(link, name));
     }
+    inputsCardForm.forEach(input => {
+      input.value = '';
+    });
   }
-  addnewCard(placeWay, placeName);
+  // addnewCard(placeWay, placeName);
+  addNewCard(placeWayValue, placeNameValue);
 }
 
 // Прикрепляем обработчик к форме:
