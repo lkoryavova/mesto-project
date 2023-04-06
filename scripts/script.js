@@ -58,12 +58,7 @@ function profileFormSubmit(evt) {
     profileText.textContent = jobInput;
   }
   closePopup(profilePopup); // Автоматическое закрытие попапа
-  inputsProfileForm.forEach(input => {
-    input.value = '';
-  });
-  // document.getElementById.forms["form-profile"].reset();
-  // или пробую так, всё равно поля не очищаются
-  // document.getElementById.profileForm.querySelectorAll('#name, #speсial').reset();
+  document.getElementById('form-profile').reset();
 }
 
 // Прикрепляем обработчик к форме:
@@ -165,9 +160,7 @@ function cardFormSubmit(evt) {
     if (link !== "" && name !== "") {
       elements.prepend(createCard(link, name));
     }
-    inputsCardForm.forEach(input => {
-      input.value = '';
-    });
+    document.getElementById('card-form').reset();
   }
   // addnewCard(placeWay, placeName);
   addNewCard(placeWayValue, placeNameValue);
