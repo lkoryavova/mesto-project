@@ -49,7 +49,7 @@ profileCloseButton.addEventListener('click', function (event) {
 // Поля формы
 // Обработчик «отправки» формы, хотя пока
 // она никуда отправляться не будет
-function profileFormSubmit(evt) {
+function submitProfileForm(evt) {
   evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
   // Так мы можем определить свою логику отправки.
   // О том, как это делать, расскажем позже.
@@ -69,7 +69,7 @@ function profileFormSubmit(evt) {
 
 // Прикрепляем обработчик к форме:
 // он будет следить за событием “submit” - «отправка»
-profileForm.addEventListener('submit', profileFormSubmit);
+profileForm.addEventListener('submit', submitProfileForm);
 
 
 const initialCards = [
@@ -167,7 +167,7 @@ placeClose.addEventListener('click', function (event) {
 // Добавление карточки пользователем
 // Обработчик «отправки» формы, хотя пока
 // она никуда отправляться не будет
-function cardFormSubmit(evt) {
+function submitCardForm(evt) {
   evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
   // Так мы можем определить свою логику отправки.
   // О том, как это делать, расскажем позже.
@@ -187,4 +187,4 @@ function cardFormSubmit(evt) {
 }
 // Прикрепляем обработчик к форме:
 // он будет следить за событием “submit” - «отправка»
-cardForm.addEventListener('submit', cardFormSubmit);
+cardForm.addEventListener('submit', submitCardForm);
