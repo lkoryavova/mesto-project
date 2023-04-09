@@ -18,6 +18,12 @@ const placeName = cardForm.querySelector('#place-name');
 const placeWay = cardForm.querySelector('#place-way');
 const inputsProfileForm = profileForm.querySelectorAll('#name, #speсial');
 const inputsCardForm = cardForm.querySelectorAll('#place-name, #place-way');
+const placeViewing = document.querySelector('.place-viewing');
+const placeViewingImage = placeViewing.querySelector('.place-viewing__image');
+const placeViewingCaption = placeViewing.querySelector('.place-viewing__caption');
+const viewing = page.querySelector('#viewing');
+const viewingContainer = viewing.querySelector('.viewing-container');
+const viewingClose = viewingContainer.querySelector('#viewing-close');
 
 // Функция открытия попапа
 function openPopup(popup) {
@@ -41,7 +47,6 @@ profileCloseButton.addEventListener('click', function (event) {
 });
 
 // Поля формы
-
 // Обработчик «отправки» формы, хотя пока
 // она никуда отправляться не будет
 function profileFormSubmit(evt) {
@@ -58,7 +63,8 @@ function profileFormSubmit(evt) {
     profileText.textContent = jobInput;
   }
   closePopup(profilePopup); // Автоматическое закрытие попапа
-  document.getElementById('form-profile').reset();
+  // очищаем инпуты
+  evt.target.reset();
 }
 
 // Прикрепляем обработчик к форме:
@@ -111,12 +117,26 @@ function createCard(link, name) {
   const elementChoice = elementSignature.querySelector('.element__choice');
   elementChoice.addEventListener('click', function (event) {
     event.target.classList.toggle('element__choice_active');
+    console.log ("Лайк карточки"); 
   });
   // Удаление карточки
   const elementDelete = cardElement.querySelector('.element__delete');
   elementDelete.addEventListener('click', function (event) {
     const listItem = elementDelete.closest('.element');
+    console.log ("Удаление карточки"); 
     listItem.remove();
+  });
+  //Открытие попапа с картинкой
+    elementImage.addEventListener('click', function (event) {
+      placeViewingImage.src = event.currentTarget.src;
+      const element = elementImage.closest('.element');
+      const elementName = element.querySelector('.element__name');
+      placeViewingCaption.textContent = elementName.textContent;
+      openPopup(viewing);
+    });
+  // Закрываем попап
+  viewingClose.addEventListener('click', function (event) {
+    closePopup(viewing);
   });
   return cardElement;
 }
@@ -155,48 +175,16 @@ function cardFormSubmit(evt) {
   // Получите значение полей placeName и placeWay из свойства value
   const placeNameValue = placeName.value;
   const placeWayValue = placeWay.value;
-
   const addNewCard = function (link, name) {
     if (link !== "" && name !== "") {
       elements.prepend(createCard(link, name));
     }
-    document.getElementById('card-form').reset();
   }
-  // addnewCard(placeWay, placeName);
   addNewCard(placeWayValue, placeNameValue);
+  closePopup(place);
+  // очищаем инпуты
+  evt.target.reset();
 }
-
 // Прикрепляем обработчик к форме:
 // он будет следить за событием “submit” - «отправка»
 cardForm.addEventListener('submit', cardFormSubmit);
-// Автоматическое закрытие попапа
-const placeButton = cardForm.querySelector('#place-button');
-placeButton.addEventListener('click', function () {
-  closePopup(place);
-});
-
-//Открытие попапа с картинкой
-//Находим элементы
-const placeViewing = document.querySelector('.place-viewing');
-const placeViewingImage = placeViewing.querySelector('.place-viewing__image');
-const placeViewingCaption = placeViewing.querySelector('.place-viewing__caption');
-const elementImage = document.querySelectorAll('.element__image');
-
-//Присваиваем значения
-elementImage.forEach((elementImage) => {
-  elementImage.addEventListener('click', function (event) {
-    placeViewingImage.src = event.currentTarget.src;
-    const element = elementImage.closest('.element');
-    const elementName = element.querySelector('.element__name');
-    placeViewingCaption.textContent = elementName.textContent;
-    openPopup(viewing);
-  })
-});
-
-// Закрываем попап
-const viewing = page.querySelector('#viewing');
-const viewingContainer = viewing.querySelector('.viewing-container');
-const viewingClose = viewingContainer.querySelector('#viewing-close');
-viewingClose.addEventListener('click', function (event) {
-  closePopup(viewing);
-});
