@@ -41,11 +41,17 @@ openButton.addEventListener('click', function (event) {
   openPopup(profilePopup);
 });
 
-// закрытие
-profileCloseButton.addEventListener('click', function (event) {
-  closePopup(profilePopup);
-});
+// находим все крестики проекта по универсальному селектору
+const closeButtons = document.querySelectorAll('.popup__close');
 
+// с окончанием `s` нужно обязательно, так как много кнопок
+closeButtons.forEach((button) => {
+  // находим 1 раз ближайший к крестику попап 
+  const popup = button.closest('.popup');
+  // устанавливаем обработчик закрытия на крестик
+  button.addEventListener('click', () => closePopup(popup));
+});
+ 
 // Поля формы
 // Обработчик «отправки» формы, хотя пока
 // она никуда отправляться не будет
@@ -63,8 +69,6 @@ function submitProfileForm(evt) {
     profileText.textContent = jobInput;
   }
   closePopup(profilePopup); // Автоматическое закрытие попапа
-  // очищаем инпуты
-  evt.target.reset();
 }
 
 // Прикрепляем обработчик к форме:
@@ -128,16 +132,11 @@ function createCard(link, name) {
   });
   //Открытие попапа с картинкой
     elementImage.addEventListener('click', function (event) {
-      placeViewingImage.src = event.currentTarget.src;
-      const element = elementImage.closest('.element');
-      const elementName = element.querySelector('.element__name');
-      placeViewingCaption.textContent = elementName.textContent;
+      placeViewingImage.src = `${link}`;
+      placeViewingImage.alt = `${name}`;
+      placeViewingCaption.textContent = `${name}`;
       openPopup(viewing);
     });
-  // Закрываем попап
-  viewingClose.addEventListener('click', function (event) {
-    closePopup(viewing);
-  });
   return cardElement;
 }
 
