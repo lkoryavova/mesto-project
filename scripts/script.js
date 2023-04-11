@@ -38,6 +38,8 @@ function closePopup(popup) {
 
 // открытие модального окна
 openButton.addEventListener('click', function (event) {
+  profileFormName.value = profileName.textContent;
+  profileFormJob.value = profileText.textContent;
   openPopup(profilePopup);
 });
 
@@ -51,7 +53,7 @@ closeButtons.forEach((button) => {
   // устанавливаем обработчик закрытия на крестик
   button.addEventListener('click', () => closePopup(popup));
 });
- 
+
 // Поля формы
 // Обработчик «отправки» формы, хотя пока
 // она никуда отправляться не будет
@@ -121,22 +123,22 @@ function createCard(link, name) {
   const elementChoice = elementSignature.querySelector('.element__choice');
   elementChoice.addEventListener('click', function (event) {
     event.target.classList.toggle('element__choice_active');
-    console.log ("Лайк карточки"); 
+    console.log("Лайк карточки");
   });
   // Удаление карточки
   const elementDelete = cardElement.querySelector('.element__delete');
   elementDelete.addEventListener('click', function (event) {
     const listItem = elementDelete.closest('.element');
-    console.log ("Удаление карточки"); 
+    console.log("Удаление карточки");
     listItem.remove();
   });
   //Открытие попапа с картинкой
-    elementImage.addEventListener('click', function (event) {
-      placeViewingImage.src = `${link}`;
-      placeViewingImage.alt = `${name}`;
-      placeViewingCaption.textContent = `${name}`;
-      openPopup(viewing);
-    });
+  elementImage.addEventListener('click', function (event) {
+    placeViewingImage.src = `${link}`;
+    placeViewingImage.alt = `${name}`;
+    placeViewingCaption.textContent = `${name}`;
+    openPopup(viewing);
+  });
   return cardElement;
 }
 
