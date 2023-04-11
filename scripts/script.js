@@ -160,11 +160,6 @@ openButtonPlace.addEventListener('click', function (event) {
   openPopup(place);
 });
 
-// закрытие
-placeClose.addEventListener('click', function (event) {
-  closePopup(place);
-});
-
 // Добавление карточки пользователем
 // Обработчик «отправки» формы, хотя пока
 // она никуда отправляться не будет
