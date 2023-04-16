@@ -49,9 +49,10 @@
       <button type="button" class="popup__close profile__close-button"></button>
       <h3 class="popup__heading">Редактировать профиль</h3>
       <form id="form-profile" name="form-profile">
-        <input type="text" class="form-profile__text" id="name" name="name" placeholder="Введите имя">
-        <input type="text" class="form-profile__text" id="speсial" name="speсial" placeholder="Введите профессию">
-        <button type="submit" class="form-profile__button">Сохранить</button>
+        <input type="text" class="form-profile__text form-profile__text_failed" id="name" name="name" placeholder="Введите имя">
+        <!-- <div id="error" style="display: none"></div>  -->
+        <input type="text" class="form-profile__text form-profile__text_failed" id="speсial" name="speсial" placeholder="Введите профессию">
+        <button type="submit" class="form-profile__button form-profile__button_disabled">Сохранить</button>
       </form>
     </div>
   </div>

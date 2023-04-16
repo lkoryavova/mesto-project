@@ -1,5 +1,7 @@
 const page = document.querySelector('.page');
+const popup = document.querySelector('.popup');
 const profilePopup = page.querySelector('.profile-popup');
+const place = page.querySelector('#place');
 const popupContainer = profilePopup.querySelector('.popup__container');
 const profileCloseButton = popupContainer.querySelector('.profile__close-button');
 const content = page.querySelector('.content');
@@ -24,6 +26,9 @@ const placeViewingCaption = placeViewing.querySelector('.place-viewing__caption'
 const viewing = page.querySelector('#viewing');
 const viewingContainer = viewing.querySelector('.viewing-container');
 const viewingClose = viewingContainer.querySelector('#viewing-close');
+//
+const formProfileText = profileForm.querySelector('.form-profile__text');
+const error = document.querySelector('#error'); // Блок с ошибкой изначально скрыт
 
 // Функция открытия попапа
 function openPopup(popup) {
@@ -35,6 +40,44 @@ function openPopup(popup) {
 function closePopup(popup) {
   popup.classList.remove('popup_opened');
 }
+
+// Закрытие попапа кликом на оверлей
+profilePopup.addEventListener('click', function (event) {
+  if (event.target === profilePopup || 'Esc') {
+    closePopup(popup);
+  }
+});
+
+place.addEventListener('click', function (event) {
+  if (event.target === place) {
+    closePopup(place);
+  }
+});
+
+viewing.addEventListener('click', function (event) {
+  if (event.target === viewing) {
+    closePopup(viewing);
+  }
+});
+
+// Закрытие попапа нажатием на Esc
+document.addEventListener('keydown', (event) => {
+  if (event.code === "Escape" && profilePopup.classList.contains('popup_opened')) {
+    closePopup(popup); 
+  }
+});
+
+document.addEventListener('keydown', (event) => {
+  if (event.code === "Escape" && place.classList.contains('popup_opened')) {
+    closePopup(place); 
+  }
+});
+
+document.addEventListener('keydown', (event) => {
+  if (event.code === "Escape" && viewing.classList.contains('popup_opened')) {
+    closePopup(viewing); 
+  }
+});
 
 // открытие модального окна
 openButton.addEventListener('click', function (event) {
@@ -151,7 +194,7 @@ initialCards.forEach(item => {
 });
 
 // открытие окна место
-const place = page.querySelector('#place');
+
 const placeContainer = place.querySelector('#place-container');
 const placeClose = placeContainer.querySelector('#place-close');
 const openButtonPlace = profile.querySelector('.profile__add-button');
@@ -184,3 +227,13 @@ function submitCardForm(evt) {
 // Прикрепляем обработчик к форме:
 // он будет следить за событием “submit” - «отправка»
 cardForm.addEventListener('submit', submitCardForm);
+
+/* script.js */
+
+formProfileText.addEventListener('keydown', function (evt) {
+  // Проверяем, была ли введена цифра
+    if (Number.isNaN(Number(evt.key))) {
+    // Если пользователь ввёл не цифру, показываем блок с ошибкой
+    error.style.display = 'block';
+    };
+});
