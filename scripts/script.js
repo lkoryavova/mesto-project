@@ -27,8 +27,11 @@ const viewing = page.querySelector('#viewing');
 const viewingContainer = viewing.querySelector('.viewing-container');
 const viewingClose = viewingContainer.querySelector('#viewing-close');
 //
-const formProfileText = profileForm.querySelector('.form-profile__text');
+const formElement = document.querySelector('.form');
+const formProfileText = formElement.querySelector('.form-profile__text');
 const error = document.querySelector('#error'); // Блок с ошибкой изначально скрыт
+const formProfileTextError = document.querySelector('.form-profile__text-error');
+const formProfileButton = formElement.querySelector('.form-profile__button');
 
 // Функция открытия попапа
 function openPopup(popup) {
@@ -42,13 +45,13 @@ function closePopup(popup) {
 }
 
 // Закрытие попапа кликом на оверлей
-profilePopup.addEventListener('click', function (event) {
-  if (event.target === profilePopup || 'Esc') {
+profilePopup.addEventListener('mousedown', function (event) {
+  if (event.target === profilePopup) {
     closePopup(popup);
   }
 });
 
-place.addEventListener('click', function (event) {
+place.addEventListener('mousedown', function (event) {
   if (event.target === place) {
     closePopup(place);
   }
@@ -63,19 +66,19 @@ viewing.addEventListener('click', function (event) {
 // Закрытие попапа нажатием на Esc
 document.addEventListener('keydown', (event) => {
   if (event.code === "Escape" && profilePopup.classList.contains('popup_opened')) {
-    closePopup(popup); 
+    closePopup(popup);
   }
 });
 
 document.addEventListener('keydown', (event) => {
   if (event.code === "Escape" && place.classList.contains('popup_opened')) {
-    closePopup(place); 
+    closePopup(place);
   }
 });
 
 document.addEventListener('keydown', (event) => {
   if (event.code === "Escape" && viewing.classList.contains('popup_opened')) {
-    closePopup(viewing); 
+    closePopup(viewing);
   }
 });
 
@@ -97,6 +100,98 @@ closeButtons.forEach((button) => {
   button.addEventListener('click', () => closePopup(popup));
 });
 
+// Валидация формы
+
+const showInputError = (formElement, formProfileText, errorMessage) => {
+  const errorElement = formElement.querySelector(`.${formProfileText.id}-error`);
+  if (formProfileText.textContent = '') {
+    errorElement.textContent = formProfileTextError.textContent;
+  } else
+    errorElement.textContent = errorMessage;
+};
+
+const hideInputError = (formElement, formProfileText) => {
+  const errorElement = formElement.querySelector(`.${formProfileText.id}-error`);
+  formProfileTextError.textContent = '';
+  errorElement.textContent = '';
+};
+
+const checkInputValidity = (formElement, formProfileText) => {
+  if (!formProfileText.validity.valid) {
+    showInputError(formElement, formProfileText, formProfileText.validationMessage);
+  } else {
+    hideInputError(formElement, formProfileText);
+  }
+};
+
+const hasInvalidInput = (inputList) => {
+  // проходим по этому массиву методом some
+  return inputList.some((formProfileText) => {
+    // Если поле не валидно, колбэк вернёт true
+    // Обход массива прекратится и вся функция
+    // hasInvalidInput вернёт true
+
+    return !formProfileText.validity.valid;
+  })
+};
+
+const toggleButtonState = (inputList, formProfileButton) => {
+  // Если есть хотя бы один невалидный инпут
+  if (hasInvalidInput(inputList)) {
+    // сделай кнопку неактивной
+    formProfileButton.disabled = true;
+    formProfileButton.classList.add('form-profile__button_inactive');
+  } else {
+    // иначе сделай кнопку активной
+    formProfileButton.disabled = false;
+    formProfileButton.classList.remove('form-profile__button_inactive');
+  }
+};
+
+const isValid = (formElement, formProfileText) => {
+  if (formProfileText.validity.patternMismatch) {
+    // данные атрибута доступны у элемента инпута через ключевое слово dataset.
+    // обратите внимание, что в js имя атрибута пишется в camelCase (да-да, в
+    // HTML мы писали в kebab-case, это не опечатка)
+    formProfileText.setCustomValidity(formProfileText.dataset.errorMessage);
+  } else {
+    formProfileText.setCustomValidity('');
+  }
+
+  if (!formProfileText.validity.valid) {
+    showInputError(formElement, formProfileText, formProfileText.validationMessage);
+  } else {
+    hideInputError(formElement, formProfileText);
+  }
+};
+
+const setEventListeners = (formElement) => {
+  // Найдём все поля формы и сделаем из них массив
+  const inputList = Array.from(formElement.querySelectorAll('.form-profile__text'));
+  inputList.forEach((formProfileText) => {
+    formProfileText.addEventListener('input', () => {
+      isValid(formElement, formProfileText);
+      checkInputValidity(formElement, formProfileText);
+      // Вызовем toggleButtonState и передадим ей массив полей и кнопку
+      toggleButtonState(inputList, formProfileButton);
+    });
+  });
+}
+
+function enableValidation() {
+  const formList = Array.from(document.querySelectorAll('.form'));
+  formList.forEach((formElement) => {
+    formElement.addEventListener('submit', (evt) => {
+      evt.preventDefault();
+    });
+      setEventListeners(formElement);
+  });
+}
+
+enableValidation();
+
+// Функция принимает массив полей ввода
+// и элемент кнопки, состояние которой нужно менять
 // Поля формы
 // Обработчик «отправки» формы, хотя пока
 // она никуда отправляться не будет
@@ -230,10 +325,10 @@ cardForm.addEventListener('submit', submitCardForm);
 
 /* script.js */
 
-formProfileText.addEventListener('keydown', function (evt) {
-  // Проверяем, была ли введена цифра
-    if (Number.isNaN(Number(evt.key))) {
-    // Если пользователь ввёл не цифру, показываем блок с ошибкой
-    error.style.display = 'block';
-    };
-});
+// formProfileText.addEventListener('keydown', function (evt) {
+//   // Проверяем, была ли введена цифра
+//     if (Number.isNaN(Number(evt.key))) {
+//     // Если пользователь ввёл не цифру, показываем блок с ошибкой
+//     error.style.display = 'block';
+//     };
+// });

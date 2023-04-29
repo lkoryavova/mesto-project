@@ -28,10 +28,11 @@
 @import url(../blocks/popup/__close/popup__close.css);
 @import url(../blocks/popup/__heading/popup__heading.css);
 @import url(../blocks/form-profile/form-profile.css);
+@import url(../blocks/form-profile/__label/form-profile__label.css);
 @import url(../blocks/form-profile/__text/form-profile__text.css);
-@import url(../blocks/form-profile/__text/_failed/form-profile__text_failed.css);
+@import url(../blocks/form-profile/__text-error/form-profile__text-error.css);
 @import url(../blocks/form-profile/__button/form-profile__button.css);
-@import url(../blocks/form-profile/__button/_disabled/form-profile__button_disabled.css);
+@import url(../blocks/form-profile/__button/_inactive/form-profile__button_inactive.css);
 @import url(../blocks/viewing-container/viewing-container.css);
 @import url(../blocks/place-viewing/place-viewing.css);
 @import url(../blocks/place-viewing/__image/place-viewing__image.css);
