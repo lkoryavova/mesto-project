@@ -51,14 +51,14 @@
       <form class="form" id="form-profile" name="form-profile" novalidate>
         <label class="form-profile__label">
           <input type="text" class="form-profile__text" id="name" name="name" minlength="2" maxlength="40"
-            pattern="^[A-Za-z -]+$" data-error-message="Разрешены только латинские буквы" placeholder="Введите имя" required>
-          <span class="form-profile__text-error">Необходимо заполнить данное поле</span>
+            pattern="^[A-Za-zа-яёА-ЯЁ -]+$" data-error-message="Разрешены только латинские буквы, кириллические буквы, знаки дефиса и пробелы" placeholder="Введите имя" required>
+          <span class="form-profile__text-error name-error">Необходимо заполнить данное поле</span>
         </label>
         <label class="form-profile__label">
           <input type="text" class="form-profile__text" id="speсial" name="speсial"
-            minlength="2" maxlength="200" pattern="^[A-Za-z -]+$" data-error-message="Разрешены только латинские буквы"
+            minlength="2" maxlength="200" pattern="^[A-Za-zа-яёА-ЯЁ -]+$" data-error-message="Разрешены только латинские буквы, кириллические буквы, знаки дефиса и пробелы"
             placeholder="Введите профессию" required>
-          <span class="form-profile__text-error">Необходимо заполнить данное поле</span>
+          <span class="form-profile__text-error speсial-error">Необходимо заполнить данное поле</span>
         </label>
         <button type="submit" class="form-profile__button">Сохранить</button>
       </form>
@@ -71,14 +71,14 @@
       <form class="form" id="card-form" name="card-form" novalidate>
         <label>
           <input type="text" class="form-profile__text" id="place-name" name="place-name" minlength="2" maxlength="40"
-            pattern="^[A-Za-z -]+$" data-error-message="Разрешены только латинские буквы" placeholder="Название" required>
-          <span class="form-profile__text-error">Необходимо заполнить данное поле</span>
+            pattern="^[A-Za-zа-яёА-ЯЁ -]+$" data-error-message="Разрешены только латинские буквы, кириллические буквы, знаки дефиса и пробелы" placeholder="Название" required>
+          <span class="form-profile__text-error place-name-error">Необходимо заполнить данное поле</span>
         </label>
         <label>
           <input type="url" class="form-profile__text" id="place-way" name="place-way" minlength="2" maxlength="200"
-            pattern="^[A-Za-z -]+$" data-error-message="Разрешены только латинские буквы"
+            pattern="^[A-Za-zа-яёА-ЯЁ -]+$" data-error-message="Разрешены только латинские буквы, кириллические буквы, знаки дефиса и пробелы"
             placeholder="Ссылка на картинку" required>
-          <span class="form-profile__text-error">Необходимо заполнить данное поле</span>
+          <span class="form-profile__text-error place-way-error">Необходимо заполнить данное поле</span>
         </label>
         <button id="place-button" type="submit" class="form-profile__button">Создать</button>
       </form>
