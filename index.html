@@ -76,7 +76,7 @@
         </label>
         <label>
           <input type="url" class="form-profile__text" id="place-way" name="place-way" minlength="2" maxlength="200"
-            pattern="^[A-Za-zа-яёА-ЯЁ -]+$" data-error-message="Разрешены только латинские буквы, кириллические буквы, знаки дефиса и пробелы"
+          pattern="https?://.+" data-error-message="Некорректно введён URL"
             placeholder="Ссылка на картинку" required>
           <span class="form-profile__text-error place-way-error">Необходимо заполнить данное поле</span>
         </label>
@@ -95,3 +95,5 @@
   </div>
   <script src="./scripts/script.js"></script>
 </body>
+
+<!-- "/\b(?:(?:https?|ftp):\/\/|www\.)[-a-z0-9+&@#\/%?=~_|!:,.;]*[-a-z0-9+&@#\/%=~_|]/i" -->
