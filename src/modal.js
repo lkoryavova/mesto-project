@@ -1,6 +1,5 @@
 
 import { openPopup, closePopup, inactiveButton } from './utils.js';
-// import { profilePopup, place, viewing, openButton, profileFormName, profileName, profileFormJob } from './index.js';
 
 const page = document.querySelector('.page');
 const content = page.querySelector('.content');
@@ -12,7 +11,6 @@ const profileNameConteiner = profileInfo.querySelector('.profile__name-conteiner
 const profileName = profileNameConteiner.querySelector('.profile__name');
 const profilePopup = page.querySelector('.profile-popup');
 const place = page.querySelector('#place');
-const viewing = page.querySelector('#viewing');
 const openButton = profileNameConteiner.querySelector('.profile__edit-button');
 const profileForm = document.forms["form-profile"];
 const profileFormJob = profileForm.querySelector('[name="speсial"]');
@@ -22,19 +20,19 @@ const openButtonPlace = document.querySelector('.profile__add-button');
 const placeButton = document.querySelector('#place-button');
 
 // открытие окна Редактирования профиля
-const openProfile = openButton.addEventListener('click', function (event) {
+const openProfile = openButton.addEventListener('click', function () {
     profileFormName.value = profileName.textContent;
     profileFormJob.value = profileText.textContent;
     openPopup(profilePopup);
 });
 
 // Открытие окна Новое место
-const openPlace = openButtonPlace.addEventListener('click', function (event) {
+const openPlace = openButtonPlace.addEventListener('click', function () {
     inactiveButton(placeButton);
     openPopup(place);
 });
 
-
+// закрытие попапа кликом на оверлей
 const clickPopupClose = popups.forEach((popup) => {
     // находим 1 раз ближайший к крестику попап 
     popup.addEventListener('mousedown', function (event) {
@@ -44,6 +42,7 @@ const clickPopupClose = popups.forEach((popup) => {
     });
 });
 
+// закрытие попапа клавишей "Escape"
 const clickEscapePopup = popups.forEach((popup) => {
     document.addEventListener('keydown', (event) => {
         if (event.code === "Escape" && popup.classList.contains('popup_opened')) {
@@ -52,21 +51,7 @@ const clickEscapePopup = popups.forEach((popup) => {
     });
 });
 
-// Закрытие попапа нажатием на Esc
-// const EscapeClosePopup = document.addEventListener('keydown', (event) => {
-//     // if (event.code === "Escape" && profilePopup.classList.contains('popup_opened')) {
-//     //     // closePopup(popup);
-//     // }
-// });
-
-// document.addEventListener('keydown', (event) => {
-//     if (event.code === "Escape" && viewing.classList.contains('popup_opened')) {
-//         closePopup(viewing);
-//     }
-// });
-
-
-
+// закрытие попапа нажатием на крестик
 // находим все крестики проекта по универсальному селектору
 const closeButtons = document.querySelectorAll('.popup__close');
 
@@ -79,23 +64,3 @@ closeButtons.forEach((button) => {
 });
 
 export { clickPopupClose, clickEscapePopup, openProfile, openPlace, closeButtons };
-
-
-// Закрытие попапа кликом на оверлей
-//  const clickProfilePopup = profilePopup.addEventListener('mousedown', function (event) {
-//     if (event.target === profilePopup) {
-//       closePopup(popup);
-//     }
-//   });
-
-//   const clickPlace = place.addEventListener('mousedown', function (event) {
-//     if (event.target === place) {
-//       closePopup(place);
-//     }
-//   });
-
-//   const clickViewing = viewing.addEventListener('click', function (event) {
-//     if (event.target === viewing) {
-//       closePopup(viewing);
-//     }
-//   });

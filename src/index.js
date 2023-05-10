@@ -1,4 +1,3 @@
-export const popup = document.querySelector('.popup');
 const profileForm = document.forms["form-profile"];
 const cardForm = document.forms["card-form"];
 
