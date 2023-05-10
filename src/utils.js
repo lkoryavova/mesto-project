@@ -11,4 +11,12 @@ function openPopup(popup) {
     popup.classList.remove('popup_opened');
   }
   
-  export {openPopup, closePopup};
+  function activeButton(formProfileButton) {
+    formProfileButton.classList.remove('form-profile__button_inactive');
+  }
+
+  function inactiveButton(formProfileButton) {
+    formProfileButton.classList.add('form-profile__button_inactive');
+  }
+
+  export {openPopup, closePopup, activeButton, inactiveButton};

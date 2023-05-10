@@ -1,4 +1,4 @@
-import {closePopup} from './utils.js';
+import {closePopup, activeButton, inactiveButton} from './utils.js';
 
 const profilePopup = document.querySelector('.profile-popup');
 const formElement = document.querySelector('.form');
@@ -6,7 +6,8 @@ const formElements = document.querySelectorAll('.form');
 // const formProfileText = formElement.querySelector('.form-profile__text');
 // const error = document.querySelector('#error'); // Блок с ошибкой изначально скрыт
 const formProfileTextError = document.querySelector('.form-profile__text-error');
-const formProfileButton = document.querySelector('.form-profile__button');
+const formProfileButton = formElement.querySelector('.form-profile__button');
+const placeButton = document.querySelector('#place-button');
 const profileFormName = document.querySelector('[name="name"]');
 const profileFormJob = document.querySelector('[name="speсial"]');
 const profileName = document.querySelector('.profile__name');
@@ -55,13 +56,13 @@ const showInputError = (formElement, formProfileText, errorMessage) => {
             if (hasInvalidInput(inputList)) {
               // сделай кнопку неактивной
               formProfileButton.disabled = true;
-              formProfileButton.classList.add('form-profile__button_inactive');
+              inactiveButton(formProfileButton);
             } else {
               // иначе сделай кнопку активной
               formProfileButton.disabled = false;
-              formProfileButton.classList.remove('form-profile__button_inactive');
+              activeButton(formProfileButton);
             }
-          }   
+          };   
   
   const isValid = (formElement, formProfileText) => {
     if (formProfileText.validity.patternMismatch) {
@@ -79,7 +80,7 @@ const showInputError = (formElement, formProfileText, errorMessage) => {
       hideInputError(formElement, formProfileText);
     }
   };
-  
+
   const setEventListeners = (formElement) => {
       // Найдём все поля формы и сделаем из них массив
       const inputList = Array.from(formElement.querySelectorAll('.form-profile__text'));
@@ -89,6 +90,7 @@ const showInputError = (formElement, formProfileText, errorMessage) => {
           checkInputValidity(formElement, formProfileText);
           // Вызовем toggleButtonState и передадим ей массив полей и кнопку
           toggleButtonState(inputList, formProfileButton);
+          toggleButtonState(inputList, placeButton);
         });
       });
     };
@@ -152,3 +154,7 @@ function submitProfileForm(evt) {
 //     });
 //   });
 // }
+
+// const buttonList = Array.from(formElement.querySelectorAll('.form-profile__button'));
+
+// buttonList.forEach((formProfileButton) => {

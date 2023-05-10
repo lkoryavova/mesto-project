@@ -1,5 +1,5 @@
 
-import { openPopup, closePopup } from './utils.js';
+import { openPopup, closePopup, inactiveButton } from './utils.js';
 // import { profilePopup, place, viewing, openButton, profileFormName, profileName, profileFormJob } from './index.js';
 
 const page = document.querySelector('.page');
@@ -17,8 +17,9 @@ const openButton = profileNameConteiner.querySelector('.profile__edit-button');
 const profileForm = document.forms["form-profile"];
 const profileFormJob = profileForm.querySelector('[name="speсial"]');
 const profileFormName = profileForm.querySelector('[name="name"]');
-const popups = document.querySelectorAll('.popup'); 
+const popups = document.querySelectorAll('.popup');
 const openButtonPlace = document.querySelector('.profile__add-button');
+const placeButton = document.querySelector('#place-button');
 
 // открытие окна Редактирования профиля
 const openProfile = openButton.addEventListener('click', function (event) {
@@ -29,7 +30,8 @@ const openProfile = openButton.addEventListener('click', function (event) {
 
 // Открытие окна Новое место
 const openPlace = openButtonPlace.addEventListener('click', function (event) {
-  openPopup(place);
+    inactiveButton(placeButton);
+    openPopup(place);
 });
 
 
@@ -76,7 +78,7 @@ closeButtons.forEach((button) => {
     button.addEventListener('click', () => closePopup(popup));
 });
 
-export {clickPopupClose, clickEscapePopup, openProfile, openPlace, closeButtons};
+export { clickPopupClose, clickEscapePopup, openProfile, openPlace, closeButtons };
 
 
 // Закрытие попапа кликом на оверлей
