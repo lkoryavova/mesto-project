@@ -44,7 +44,7 @@
   <footer class="footer">
     <p class="footer__info">© 2020 Mesto Russia</p>
   </footer>
-  <div class="popup profile-popup">
+  <div  class="popup profile-popup">
     <div class="popup__container">
       <button type="button" class="popup__close profile__close-button"></button>
       <h3 class="popup__heading">Редактировать профиль</h3>
@@ -66,7 +66,7 @@
   </div>
   <div id="place" class="popup">
     <div id="place-container" class="popup__container">
-      <button id="place-close" type="button" class="popup__close "></button>
+      <button id="place-close" type="button" class="popup__close"></button>
       <h3 id="place-heading" class="popup__heading">Новое место</h3>
       <form class="form" id="card-form" name="card-form" novalidate>
         <label>
@@ -93,7 +93,9 @@
       </figure>
     </div>
   </div>
-  <script src="./scripts/script.js"></script>
+  <script type="module" src="./src/index.js"></script>
+  <!-- <script type="module" src="./scripts/card.js"></script> -->
+  <script type="module" src="./src/modal.js"></script>
+  <!-- <script type="module" src="./scripts/utils.js"></script> -->
+  <!-- <script type="module" src="./scripts/validate.js"></script> -->
 </body>
-
-<!-- "/\b(?:(?:https?|ftp):\/\/|www\.)[-a-z0-9+&@#\/%?=~_|!:,.;]*[-a-z0-9+&@#\/%=~_|]/i" -->
