@@ -1,4 +1,4 @@
-export const popup = document.querySelector('.popup');
+import '../pages/index.css'; // добавьте импорт главного файла стилей 
 const profileForm = document.forms["form-profile"];
 const cardForm = document.forms["card-form"];
 

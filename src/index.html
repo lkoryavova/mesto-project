@@ -5,12 +5,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mesto</title>
-  <link rel="stylesheet" href="./pages/index.css">
+  <!-- <link rel="stylesheet" href="./pages/index.css"> -->
+
 </head>
 
 <body class="page">
   <header class="header">
-    <img class="header__logo" src="./images/logo_mesto.svg" alt="логотип проекта 'Место'">
+    <img class="header__logo" src="<%=require('./images/logo_mesto.svg'))%>" alt="логотип проекта 'Место'">
   </header>
   <main class="content">
     <section class="profile">
@@ -99,3 +100,5 @@
   <!-- <script type="module" src="./scripts/utils.js"></script> -->
   <!-- <script type="module" src="./scripts/validate.js"></script> -->
 </body>
+
+<!-- <img class="header__logo" src="./images/logo_mesto.svg" alt="логотип проекта 'Место'"> -->

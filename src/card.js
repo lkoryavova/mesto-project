@@ -11,31 +11,31 @@ const placeName = document.querySelector('#place-name');
 const placeWay = document.querySelector('#place-way');
 
 const initialCards = [
-    {
-      name: 'Архыз',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-    },
-    {
-      name: 'Челябинская область',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-    },
-    {
-      name: 'Иваново',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-    },
-    {
-      name: 'Камчатка',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-    },
-    {
-      name: 'Холмогорский район',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-    },
-    {
-      name: 'Байкал',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-    }
-  ];
+  {
+    name: 'Архыз',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
+  },
+  {
+    name: 'Челябинская область',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
+  },
+  {
+    name: 'Иваново',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
+  },
+  {
+    name: 'Камчатка',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
+  },
+  {
+    name: 'Холмогорский район',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
+  },
+  {
+    name: 'Байкал',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
+  }
+];
 
 // Добавляем карточки на страницу
 
@@ -104,3 +104,39 @@ function submitCardForm(evt) {
   }
 
 export {cardGallery, submitCardForm};
+
+
+
+// import Arhiz from 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg';
+// import chelyabinskayaOblast from 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg';
+// import ivanovo from 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg';
+// import kamcatka from 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg';
+// import holmogorskiyRayon from 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg';
+// import baykal from 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg';
+
+// const initialCards = [
+//     {
+//       name: 'Архыз',
+//       link: Arhiz
+//     },
+//     {
+//       name: 'Челябинская область',
+//       link: chelyabinskayaOblast
+//     },
+//     {
+//       name: 'Иваново',
+//       link: ivanovo
+//     },
+//     {
+//       name: 'Камчатка',
+//       link: kamcatka
+//     },
+//     {
+//       name: 'Холмогорский район',
+//       link: holmogorskiyRayon
+//     },
+//     {
+//       name: 'Байкал',
+//       link: baykal
+//     }
+//   ];
