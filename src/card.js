@@ -1,4 +1,5 @@
-import {openPopup, closePopup} from './utils.js';
+import { openPopup, closePopup } from './utils.js';
+import { getInitialCards } from './api.js';
 
 const elements = document.querySelector('.elements');
 // const inputsCardForm = cardForm.querySelectorAll('#place-name, #place-way');
@@ -10,35 +11,8 @@ const viewingClose = viewingContainer.querySelector('#viewing-close');
 const placeName = document.querySelector('#place-name');
 const placeWay = document.querySelector('#place-way');
 
-const initialCards = [
-  {
-    name: 'Архыз',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-  },
-  {
-    name: 'Челябинская область',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-  },
-  {
-    name: 'Иваново',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-  },
-  {
-    name: 'Камчатка',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-  },
-  {
-    name: 'Холмогорский район',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-  },
-  {
-    name: 'Байкал',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-  }
-];
 
 // Добавляем карточки на страницу
-
 function createCard(link, name) {
   const cardTemplate = document.querySelector('#card-template').content;
   const cardElement = cardTemplate.querySelector('.element').cloneNode(true);
@@ -77,66 +51,36 @@ const addCard = function (link, name) {
   elements.append(createCard(link, name));
 }
 
-const cardGallery = initialCards.forEach(item => {
-  addCard(item.link, item.name);
-});
+// Загрузка карточек с сервера
+getInitialCards().then((result) => {
+   result.forEach(item => {
+    addCard(item.link, item.name);
+  });
+})
+  .catch((err) => {
+    console.log(err); // выводим ошибку в консоль
+  });
 
 // Добавление карточки пользователем
 // Обработчик «отправки» формы, хотя пока
 // она никуда отправляться не будет
 function submitCardForm(evt) {
-    evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
-    // Так мы можем определить свою логику отправки.
-    // О том, как это делать, расскажем позже.
-  
-    // Получите значение полей placeName и placeWay из свойства value
-    const placeNameValue = placeName.value;
-    const placeWayValue = placeWay.value;
-    const addNewCard = function (link, name) {
-      if (link !== "" && name !== "") {
-        elements.prepend(createCard(link, name));
-      }
+  evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
+  // Так мы можем определить свою логику отправки.
+  // О том, как это делать, расскажем позже.
+
+  // Получите значение полей placeName и placeWay из свойства value
+  const placeNameValue = placeName.value;
+  const placeWayValue = placeWay.value;
+  const addNewCard = function (link, name) {
+    if (link !== "" && name !== "") {
+      elements.prepend(createCard(link, name));
     }
-    addNewCard(placeWayValue, placeNameValue);
-    closePopup(place);
-    // очищаем инпуты
-    evt.target.reset();
   }
+  addNewCard(placeWayValue, placeNameValue);
+  closePopup(place);
+  // очищаем инпуты
+  evt.target.reset();
+}
 
-export {cardGallery, submitCardForm};
-
-
-
-// import Arhiz from 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg';
-// import chelyabinskayaOblast from 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg';
-// import ivanovo from 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg';
-// import kamcatka from 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg';
-// import holmogorskiyRayon from 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg';
-// import baykal from 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg';
-
-// const initialCards = [
-//     {
-//       name: 'Архыз',
-//       link: Arhiz
-//     },
-//     {
-//       name: 'Челябинская область',
-//       link: chelyabinskayaOblast
-//     },
-//     {
-//       name: 'Иваново',
-//       link: ivanovo
-//     },
-//     {
-//       name: 'Камчатка',
-//       link: kamcatka
-//     },
-//     {
-//       name: 'Холмогорский район',
-//       link: holmogorskiyRayon
-//     },
-//     {
-//       name: 'Байкал',
-//       link: baykal
-//     }
-//   ];
+export { submitCardForm };
