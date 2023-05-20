@@ -1,4 +1,6 @@
 import {closePopup, activeButton, inactiveButton} from './utils.js';
+import { editProfile } from './api.js';
+
 
 const profilePopup = document.querySelector('.profile-popup');
 const formElement = document.querySelector('.form');
@@ -105,11 +107,10 @@ const showInputError = (formElement, formProfileText, errorMessage) => {
     });
   }
 
-  // Функция принимает массив полей ввода
-// и элемент кнопки, состояние которой нужно менять
-// Поля формы
-// Обработчик «отправки» формы, хотя пока
-// она никуда отправляться не будет
+/* 
+Функция принимает массив полей ввода и элемент кнопки, состояние которой нужно менять поля формы.
+Обработчик «отправки» формы, хотя пока она никуда отправляться не будет 
+*/
 function submitProfileForm(evt) {
     evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
     // Так мы можем определить свою логику отправки.
@@ -122,6 +123,7 @@ function submitProfileForm(evt) {
     if (nameInput !== "" && jobInput !== "") {
       profileName.textContent = nameInput;
       profileText.textContent = jobInput;
+      editProfile(nameInput, jobInput);
     }
     closePopup(profilePopup); // Автоматическое закрытие попапа
   }

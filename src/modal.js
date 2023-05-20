@@ -1,5 +1,6 @@
 
 import { openPopup, closePopup, inactiveButton } from './utils.js';
+import { getUserProfile } from './api.js';
 
 const page = document.querySelector('.page');
 const content = page.querySelector('.content');
@@ -18,6 +19,7 @@ const profileFormName = profileForm.querySelector('[name="name"]');
 const popups = document.querySelectorAll('.popup');
 const openButtonPlace = document.querySelector('.profile__add-button');
 const placeButton = document.querySelector('#place-button');
+
 
 // открытие окна Редактирования профиля
 const openProfile = openButton.addEventListener('click', function () {
