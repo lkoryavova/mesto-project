@@ -53,3 +53,23 @@ export const getInitialCards = () => {
     });
 }
 
+// Добавление новой карточки
+export const addNewCard = (src, name) => {
+  fetch(`${config.baseUrl}/cards`, {
+    method: 'POST',
+    headers: {
+      authorization: '665a484f-7a32-43f2-b793-9f53818a755f',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      name: `${name}`,
+      link: `${src}`
+    })
+  }).then(res => {
+    if (res.ok) {
+      return res.json();
+    }
+    // если ошибка, отклоняем промис
+    return Promise.reject(`Ошибка: ${res.status}`);
+  });
+}

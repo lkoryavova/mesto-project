@@ -1,5 +1,5 @@
 import { openPopup, closePopup } from './utils.js';
-import { getInitialCards } from './api.js';
+import { getInitialCards, addNewCard } from './api.js';
 
 const elements = document.querySelector('.elements');
 // const inputsCardForm = cardForm.querySelectorAll('#place-name, #place-way');
@@ -12,7 +12,7 @@ const placeName = document.querySelector('#place-name');
 const placeWay = document.querySelector('#place-way');
 
 
-// Добавляем карточки на страницу
+// Функция создания новой карточки
 function createCard(link, name) {
   const cardTemplate = document.querySelector('#card-template').content;
   const cardElement = cardTemplate.querySelector('.element').cloneNode(true);
@@ -22,6 +22,7 @@ function createCard(link, name) {
   elementImage.src = `${link}`;
   elementName.textContent = `${name}`;
   elementImage.alt = `${name}`;
+
 
   // Лайк карточки
   const elementChoice = elementSignature.querySelector('.element__choice');
@@ -46,6 +47,11 @@ function createCard(link, name) {
   });
   return cardElement;
 }
+
+// Добавляем карточки на страницу
+// addNewCard().then((result) => {
+//   elements.append(createCard(result.link, result.name));
+// });
 
 const addCard = function (link, name) {
   elements.append(createCard(link, name));
@@ -72,11 +78,12 @@ function submitCardForm(evt) {
   // Получите значение полей placeName и placeWay из свойства value
   const placeNameValue = placeName.value;
   const placeWayValue = placeWay.value;
-  const addNewCard = function (link, name) {
-    if (link !== "" && name !== "") {
-      elements.prepend(createCard(link, name));
-    }
-  }
+  // const addNewCard = function (link, name) {
+    // if (link !== "" && name !== "") {
+      elements.prepend(createCard(placeWayValue, placeNameValue));
+    // }
+  // }
+  addCard(placeWayValue, placeNameValue);
   addNewCard(placeWayValue, placeNameValue);
   closePopup(place);
   // очищаем инпуты
