@@ -1,6 +1,7 @@
 import { openPopup, closePopup } from './utils.js';
-import { getInitialCards, addNewCard, toggleLike } from './api.js';
+import { getInitialCards, submitNewCard, toggleLike } from './api.js';
 
+const myID = 'b63e6496dcdc54028081a240';
 const elements = document.querySelector('.elements');
 // const inputsCardForm = cardForm.querySelectorAll('#place-name, #place-way');
 const inputsCardForm = document.querySelectorAll('#place-name, #place-way');
@@ -20,22 +21,27 @@ function createCard(link, name, _id, likes) {
   const elementName = elementSignature.querySelector('.element__name');
   const elementChoiceBox = elementSignature.querySelector('.element__choice-box');
   const elementChoiceQuantity = elementChoiceBox.querySelector('.element__choice-quantity');
+  const elementChoice = elementChoiceBox.querySelector('.element__choice');
 
   elementImage.src = `${link}`;
   elementName.textContent = `${name}`;
   elementImage.alt = `${name}`;
-  elementChoiceQuantity.textContent = `${likes}`;
+  elementChoiceQuantity.textContent = `${likes.length}`;
+  likes.forEach(item => {
+    if (item._id == myID) {
+      elementChoice.classList.add('element__choice_active');
+    }
+  });
 
   // Лайк карточки
-  const elementChoice = elementChoiceBox.querySelector('.element__choice');
+  
   elementChoice.addEventListener('click', function (event) {
     event.target.classList.toggle('element__choice_active');
-
-    // if (elementChoice.classList.contains('element__choice_active')) {
-    //   elementChoiceQuantity.textContent = toggleLike(_id, 'PUT');
-    // } else {
-    //   elementChoiceQuantity.textContent = toggleLike(_id, 'DELETE');
-    // }
+    if (elementChoice.classList.contains('element__choice_active')) {
+      elementChoiceQuantity.textContent = toggleLike(_id, 'PUT');
+    } else {
+      elementChoiceQuantity.textContent = toggleLike(_id, 'DELETE');
+    }
   });
 
   // Удаление карточки
@@ -56,20 +62,11 @@ function createCard(link, name, _id, likes) {
   return cardElement;
 }
 
-// Добавляем карточки на страницу
-// addNewCard().then((result) => {
-//   elements.append(createCard(result.link, result.name));
-// });
-
-const addCard = function (link, name, _id, likes) {
-  elements.append(createCard(link, name, _id, likes));
-}
 
 // Загрузка карточек с сервера
 getInitialCards().then((result) => {
   result.forEach(item => {
-    // console.log(item.name, item.likes.length);
-    addCard(item.link, item.name, item._id, item.likes.length);
+    elements.append(createCard(item.link, item.name, item._id, item.likes));
   });
 })
   .catch((err) => {
@@ -87,13 +84,13 @@ function submitCardForm(evt) {
   // Получите значение полей placeName и placeWay из свойства value
   const placeNameValue = placeName.value;
   const placeWayValue = placeWay.value;
-  // const addNewCard = function (link, name) {
-  // if (link !== "" && name !== "") {
-  elements.prepend(createCard(placeWayValue, placeNameValue));
-  // }
-  // }
-  addCard(placeWayValue, placeNameValue, 0);
-  addNewCard(placeWayValue, placeNameValue);
+  submitNewCard(placeWayValue, placeNameValue).then((result) => {
+    elements.prepend(createCard(result.link, result.name, result._id, result.likes));
+  })
+    .catch((err) => {
+      console.log(err); // выводим ошибку в консоль
+    });
+
   closePopup(place);
   // очищаем инпуты
   evt.target.reset();

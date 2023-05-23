@@ -53,9 +53,9 @@ export const getInitialCards = () => {
     });
 }
 
-// Добавление новой карточки
-export const addNewCard = (src, name) => {
-  fetch(`${config.baseUrl}/cards`, {
+/** Добавление новой карточки на сервер */
+export const submitNewCard = (src, name) => {
+  return fetch(`${config.baseUrl}/cards`, {
     method: 'POST',
     headers: config.headers,
     body: JSON.stringify({
@@ -64,6 +64,7 @@ export const addNewCard = (src, name) => {
     })
   }).then(res => {
     if (res.ok) {
+      // console.log("Создана карточка", res.json());
       return res.json();
     }
     // если ошибка, отклоняем промис
