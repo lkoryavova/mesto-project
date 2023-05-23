@@ -1,0 +1,9 @@
+.element__choice-box {
+    max-width: 22px;
+    width: 100%;
+    max-height: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}

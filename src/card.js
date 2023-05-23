@@ -1,5 +1,5 @@
 import { openPopup, closePopup } from './utils.js';
-import { getInitialCards, addNewCard } from './api.js';
+import { getInitialCards, addNewCard, toggleLike } from './api.js';
 
 const elements = document.querySelector('.elements');
 // const inputsCardForm = cardForm.querySelectorAll('#place-name, #place-way');
@@ -11,35 +11,43 @@ const viewingClose = viewingContainer.querySelector('#viewing-close');
 const placeName = document.querySelector('#place-name');
 const placeWay = document.querySelector('#place-way');
 
-
 // Функция создания новой карточки
-function createCard(link, name) {
+function createCard(link, name, _id, likes) {
   const cardTemplate = document.querySelector('#card-template').content;
   const cardElement = cardTemplate.querySelector('.element').cloneNode(true);
   const elementImage = cardElement.querySelector('.element__image');
   const elementSignature = cardElement.querySelector('.element__signature');
   const elementName = elementSignature.querySelector('.element__name');
+  const elementChoiceBox = elementSignature.querySelector('.element__choice-box');
+  const elementChoiceQuantity = elementChoiceBox.querySelector('.element__choice-quantity');
+
   elementImage.src = `${link}`;
   elementName.textContent = `${name}`;
   elementImage.alt = `${name}`;
-
+  elementChoiceQuantity.textContent = `${likes}`;
 
   // Лайк карточки
-  const elementChoice = elementSignature.querySelector('.element__choice');
+  const elementChoice = elementChoiceBox.querySelector('.element__choice');
   elementChoice.addEventListener('click', function (event) {
     event.target.classList.toggle('element__choice_active');
-    console.log("Лайк карточки");
+
+    // if (elementChoice.classList.contains('element__choice_active')) {
+    //   elementChoiceQuantity.textContent = toggleLike(_id, 'PUT');
+    // } else {
+    //   elementChoiceQuantity.textContent = toggleLike(_id, 'DELETE');
+    // }
   });
+
   // Удаление карточки
   const elementDelete = cardElement.querySelector('.element__delete');
-  elementDelete.addEventListener('click', function (event) {
+  elementDelete.addEventListener('click', function () {
     const listItem = elementDelete.closest('.element');
     console.log("Удаление карточки");
     listItem.remove();
   });
 
   //Открытие попапа с картинкой
-  elementImage.addEventListener('click', function (event) {
+  elementImage.addEventListener('click', function () {
     placeViewingImage.src = `${link}`;
     placeViewingImage.alt = `${name}`;
     placeViewingCaption.textContent = `${name}`;
@@ -53,14 +61,15 @@ function createCard(link, name) {
 //   elements.append(createCard(result.link, result.name));
 // });
 
-const addCard = function (link, name) {
-  elements.append(createCard(link, name));
+const addCard = function (link, name, _id, likes) {
+  elements.append(createCard(link, name, _id, likes));
 }
 
 // Загрузка карточек с сервера
 getInitialCards().then((result) => {
-   result.forEach(item => {
-    addCard(item.link, item.name);
+  result.forEach(item => {
+    // console.log(item.name, item.likes.length);
+    addCard(item.link, item.name, item._id, item.likes.length);
   });
 })
   .catch((err) => {
@@ -79,11 +88,11 @@ function submitCardForm(evt) {
   const placeNameValue = placeName.value;
   const placeWayValue = placeWay.value;
   // const addNewCard = function (link, name) {
-    // if (link !== "" && name !== "") {
-      elements.prepend(createCard(placeWayValue, placeNameValue));
-    // }
+  // if (link !== "" && name !== "") {
+  elements.prepend(createCard(placeWayValue, placeNameValue));
   // }
-  addCard(placeWayValue, placeNameValue);
+  // }
+  addCard(placeWayValue, placeNameValue, 0);
   addNewCard(placeWayValue, placeNameValue);
   closePopup(place);
   // очищаем инпуты
@@ -91,3 +100,5 @@ function submitCardForm(evt) {
 }
 
 export { submitCardForm };
+
+

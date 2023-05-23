@@ -38,7 +38,7 @@ export const editProfile = (name, about) => {
   });
 }
 
-// Загрузка карточек с сервера
+/** Загрузка карточек с сервера */
 export const getInitialCards = () => {
   return fetch(`${config.baseUrl}/cards`, {
     headers: config.headers
@@ -57,10 +57,7 @@ export const getInitialCards = () => {
 export const addNewCard = (src, name) => {
   fetch(`${config.baseUrl}/cards`, {
     method: 'POST',
-    headers: {
-      authorization: '665a484f-7a32-43f2-b793-9f53818a755f',
-      'Content-Type': 'application/json'
-    },
+    headers: config.headers,
     body: JSON.stringify({
       name: `${name}`,
       link: `${src}`
@@ -73,3 +70,43 @@ export const addNewCard = (src, name) => {
     return Promise.reject(`Ошибка: ${res.status}`);
   });
 }
+
+/**
+ * Постановка/удаление лайка.
+ * Возвращается количество лайков (цифра)
+ */
+export const toggleLike = (id, method) => {
+  console.log(id, method);
+  fetch(`${config.baseUrl}/cards/likes/${id}`, {
+    method: `${method}`,
+    headers: config.headers,
+    body: JSON.stringify({
+      id: `${id}`
+    })
+  }).then(res => {
+    if (res.ok) {
+      res.json().then((result) => {
+        return result.likes.length;
+      })
+    }
+  });
+}
+
+
+// export const addLike = toggleLike(id, likes, 'PUT');
+// export const deleteLike = toggleLike(id, likes, 'DELETE');
+
+// // Cнятие лайка
+// export const deliteLike = (_id, likes) => {
+//   fetch(`${config.baseUrl}cards/likes/${_id}`, {
+//     method: 'DELETE',
+//     headers: config.headers,
+//     body: JSON.stringify({
+//       likes: `${likes}`,
+//     })
+//   }).then(res => {
+//     if (res.ok) {
+//       return res.json();
+//     }
+//   });
+// }

@@ -1,7 +1,7 @@
 .element__choice {
     max-width: 22px;
     width: 100%;
-    max-height: 28px;
+    height: 19px;
     background-color: white;
     background-image: url('../../../images/heart.svg');
     background-repeat: no-repeat;

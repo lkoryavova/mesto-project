@@ -120,11 +120,10 @@ function submitProfileForm(evt) {
     const nameInput = profileFormName.value;
     const jobInput = profileFormJob.value;
     // Вставьте новые значения с помощью textContent
-    if (nameInput !== "" && jobInput !== "") {
+
       profileName.textContent = nameInput;
       profileText.textContent = jobInput;
       editProfile(nameInput, jobInput);
-    }
     closePopup(profilePopup); // Автоматическое закрытие попапа
   }
 

@@ -20,8 +20,10 @@
 @import url(../blocks/element/__image/element__image.css);
 @import url(../blocks/element/__signature/element__signature.css);
 @import url(../blocks/element/__name/element__name.css);
+@import url(../blocks/element/__choice-box/element__choice-box.css);
 @import url(../blocks/element/__choice/element__choice.css);
 @import url(../blocks/element/__choice/_active/element__choice_active.css);
+@import url(../blocks/element/__choice-quantity/element__choice-quantity.css);
 @import url(../blocks/popup/popup.css);
 @import url(../blocks/popup/_opened/popup_opened.css);
 @import url(../blocks/popup/__container/popup__container.css);
