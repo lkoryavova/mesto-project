@@ -34,13 +34,17 @@ function createCard(link, name, _id, likes) {
   });
 
   // Лайк карточки
-  
   elementChoice.addEventListener('click', function (event) {
-    event.target.classList.toggle('element__choice_active');
     if (elementChoice.classList.contains('element__choice_active')) {
-      elementChoiceQuantity.textContent = toggleLike(_id, 'PUT');
+      event.target.classList.toggle('element__choice_active');
+      toggleLike(_id, 'DELETE').then((result) => {
+        elementChoiceQuantity.textContent = result.likes.length;
+      });
     } else {
-      elementChoiceQuantity.textContent = toggleLike(_id, 'DELETE');
+      event.target.classList.toggle('element__choice_active');
+      toggleLike(_id, 'PUT').then((result) => {
+        elementChoiceQuantity.textContent = result.likes.length;
+      });
     }
   });
 

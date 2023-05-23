@@ -78,17 +78,16 @@ export const submitNewCard = (src, name) => {
  */
 export const toggleLike = (id, method) => {
   console.log(id, method);
-  fetch(`${config.baseUrl}/cards/likes/${id}`, {
+  return fetch(`${config.baseUrl}/cards/likes/${id}`, {
     method: `${method}`,
     headers: config.headers,
     body: JSON.stringify({
-      id: `${id}`
+      id: `${id}`,
+      // likes: `${likes}`
     })
   }).then(res => {
     if (res.ok) {
-      res.json().then((result) => {
-        return result.likes.length;
-      })
+      return res.json();
     }
   });
 }
